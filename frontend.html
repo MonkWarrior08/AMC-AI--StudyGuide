@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chat Interface</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="chat-container"></div>
+    <input type="text" id="user-input">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+    function sendMessage() {
+        var message = $('#user-input').val();
+        $.ajax({
+            url: '/chat',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({message: message}),
+            success: function(response) {
+                $('#chat-container').append('<p>User: ' + message + '</p>');
+                $('#chat-container').append('<p>AI: ' + response.response + '</p>');
+                $('#user-input').val('');
+            }
+        });
+    }
+    </script>
+</body>
+</html>

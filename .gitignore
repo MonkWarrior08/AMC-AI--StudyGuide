@@ -1,0 +1,16 @@
+# Ignore environment files
+venv/
+
+# Ignore Nginx and Gunicorn files
+nginx.conf
+gunicorn.service
+
+# Ignore SSL certificates
+*.pem
+*.key
+*.crt   
+
+# Ignore deployment script
+deploy.sh
+
+.DS_Store   
