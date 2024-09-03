@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.DEBUG)
 # Initialize the ChatOpenAI model
 chat_model = ChatOpenAI(
     model_name="ft:gpt-4o-2024-08-06:personal:monkone:A3GOmfoi",  # Replace with your fine-tuned model if available
-    openai_api_key="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"
+    openai_api_key="openai_api_key"
 )
 
 @app.route('/')
