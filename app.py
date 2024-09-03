@@ -2,6 +2,8 @@ import logging
 from flask import Flask, render_template, request, jsonify
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage
+import os
+from openai import OpenAI
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -9,7 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
 # Initialize the ChatOpenAI model
 chat_model = ChatOpenAI(
     model_name="model_name",  # Replace with your fine-tuned model if available
-    openai_api_key="openai_api_key"
+    openai_api_key=os.environ.get("OPENAI_API_KEY")
 )
 
 @app.route('/')
