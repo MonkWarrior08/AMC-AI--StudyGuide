@@ -1,10 +1,46 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>AI Chat Interface</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <!-- ... (rest of the HTML code from the previous response) ... -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+</head>
+<body>
+    <h1>Welcome to the Chat Application</h1>
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+    function sendMessage() {
+        const userInput = document.getElementById('user-input').value;
+        fetch('/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({message: userInput}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            chatMessages.innerHTML += `<p><strong>AI:</strong> ${data.response}</p>`;
+            document.getElementById('user-input').value = '';
+        });
+    }
+    </script>
+
 </body>
 </html>
